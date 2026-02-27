@@ -2,7 +2,7 @@ context:
   version: "10.0"
 
 recipe:
-  name: slang-systemverilog-packages
+  name: slang-verilog-packages
   version: ${{ version }}
 
 source:
@@ -16,7 +16,7 @@ build:
 
 outputs:
   - package:
-      name: slang-systemverilog
+      name: slang-verilog
     build:
       number: 0
       script:
@@ -56,6 +56,19 @@ outputs:
               - slang --version
 
   - package:
+      name: slang-systemverilog
+    build:
+      number: 0
+      noarch: generic
+      script: "echo 'alias package'"
+    requirements:
+      run:
+        - slang-verilog ==${{ version }}
+    tests:
+      - script:
+          - slang --version
+
+  - package:
       name: slang-sv
     build:
       number: 0
@@ -63,7 +76,7 @@ outputs:
       script: "echo 'alias package'"
     requirements:
       run:
-        - slang-systemverilog ==${{ version }}
+        - slang-verilog ==${{ version }}
     tests:
       - script:
           - slang --version
@@ -76,7 +89,7 @@ outputs:
       script: "echo 'alias package'"
     requirements:
       run:
-        - slang-systemverilog ==${{ version }}
+        - slang-verilog ==${{ version }}
     tests:
       - script:
           - slang --version
@@ -95,6 +108,6 @@ about:
   documentation: https://sv-lang.com/user-manual.html
 
 extra:
-  feedstock-name: slang-systemverilog
+  feedstock-name: slang-verilog
   recipe-maintainers:
     - timkpaine

@@ -43,7 +43,7 @@ requirements:
         - mimalloc >=2.2
   run:
     - python
-    - slang-systemverilog ==${{ slang_version }}
+    - slang-verilog ==${{ slang_version }}
 
 tests:
   - python:
